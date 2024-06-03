@@ -1,37 +1,24 @@
-## Create a project
-
-Create a folder as project root
-
-## Create the module
-
-Cd to the root folder
-run
+## sonar server(local)
 
 ```
-go mod init [module-name]
+url: localhost:9000
+account: admin / Admin
+token of "admin" account: squ_46b042f5b5d692c20a3a0874eda1db9c56e87c6e
 ```
 
-## Create the main file
+local_sonar_tool
+/var/jenkins_home/sonar-scanner-4.2.0.1873-linux
+
+## sonar cloud
 
 ```
-main.go
+https://sonarcloud.io
+account: log by github
+token name: sonar_token
+token: 6819b048b7a4413544794e2e15d8491d7557c72d
 ```
 
-## Used packages
+## Dang xem video + github
 
-1. for http server: gin [https://github.com/gin-gonic/gin]
-
-```
-go get -u github.com/gin-gonic/gin
-```
-
-2.for orm: GORM [https://gorm.io/]
-
-```
-go get -u gorm.io/gorm
-go get -u gorm.io/driver/mysql
-```
-
-## Use env variables in cscode
-
-https://200lab.io/blog/golang-environment-variable-bien-moi-truong-trong-golang/
+https://www.youtube.com/watch?v=Bgv4C0buCsU
+https://github.com/webmagicinformatica/hello-webapp-golang/blob/master/Jenkinsfile
