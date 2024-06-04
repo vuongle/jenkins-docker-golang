@@ -1,7 +1,20 @@
-FROM golang:latest
+FROM golang:1.22.2-alpine3.18
 
-WORKDIR /app
+RUN apk update && apk add git
 
-COPY . /app
+ENV GO111MODULE=on
 
-CMD ["./main"]
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+WORKDIR $GOPATH/src/todo
+
+COPY . .
+
+RUN go get ./
+RUN go build -o app
+
+ENTRYPOINT ["./app"]
+
+EXPOSE 3000
