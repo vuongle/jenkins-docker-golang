@@ -8,8 +8,8 @@ pipeline {
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN') // Reference Jenkins credential ID
         GIT_SHORT_HASH = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-        DOCKER_IMAGE = "vuongle/golang-todo-${GIT_SHORT_HASH}"
-        DOCKER_TAG = "v1"
+        DOCKER_IMAGE = "vuongle/golang-todo-api"
+        DOCKER_TAG = "${GIT_SHORT_HASH}"
     }
 
     stages {
@@ -60,6 +60,9 @@ pipeline {
         success{
             // remove image after pushing
             sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
+        }
+        always{
+            mail bcc: '', body: "The commit ${GIT_SHORT_HASH} is built. You can pull and check for now.", cc: '', from: '', replyTo: '', subject: 'Jenkins Notification', to: 'le.quang.vuong@quantic.com.vn'
         }
     }
 }
