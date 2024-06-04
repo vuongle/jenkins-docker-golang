@@ -7,6 +7,8 @@ pipeline {
 
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN') // Reference Jenkins credential ID
+        DOCKER_IMAGE = "vuongle/golang-todo-api"
+        DOCKER_TAG = "v1"
     }
 
     stages {
@@ -35,5 +37,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Build Docker Image') {
+           steps {
+               script {
+                   sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+               }
+           }
+       }
     }
 }

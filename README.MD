@@ -15,7 +15,7 @@ local_sonar_tool
 https://sonarcloud.io
 account: log by github
 token name: sonar_token
-token: 6819b048b7a4413544794e2e15d8491d7557c72d
+token: 3b04a69025d132ab0fa4872ef3c34e644cfeb951
 ```
 
 ## Dang xem video + github
